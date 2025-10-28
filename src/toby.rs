@@ -19,12 +19,12 @@ pub struct ReplyMsg {
 
 pub type HandlerFn = fn(&Msg) -> Pin<Box<dyn Future<Output = anyhow::Result<ReplyMsg>> + Send>>;
 
-pub struct TBot {
+pub struct Toby {
     bot: Bot,
     handler: Arc<HandlerFn>,
 }
 
-impl TBot {
+impl Toby {
     pub fn new<TToken>(token: TToken, handler: HandlerFn) -> Self
     where
         TToken: Into<String>,

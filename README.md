@@ -1,4 +1,4 @@
-# TBot
+# Toby
 
 A simple, opinionated Telegram bot library built on top of [teloxide](https://github.com/teloxide/teloxide), providing an easy-to-use interface for building Telegram bots with structured command parsing.
 
@@ -15,7 +15,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-tbot = { path = "." }  # Or publish to crates.io and use version
+toby = { path = "." }  # Or publish to crates.io and use version
 tokio = { version = "1.8", features = ["rt-multi-thread", "macros"] }
 anyhow = "1.0"
 ```
@@ -25,7 +25,7 @@ anyhow = "1.0"
 ```rust
 use anyhow::anyhow;
 use std::{future::Future, pin::Pin};
-use tbot::{Msg, ReplyMsg, TBot};
+use toby::{Msg, ReplyMsg, Toby};
 
 fn handle_msg(msg: &Msg) -> Pin<Box<dyn Future<Output = anyhow::Result<ReplyMsg>> + Send>> {
     Box::pin(async move {
@@ -50,13 +50,13 @@ async fn main() {
     let token = std::env::var("TELEGRAM_BOT_TOKEN")
         .expect("TELEGRAM_BOT_TOKEN not set");
 
-    TBot::new(token, handle_msg).listen().await;
+    Toby::new(token, handle_msg).listen().await;
 }
 ```
 
 ## Command Format
 
-TBot supports a special command format that allows both short arguments and key-value pairs:
+Toby supports a special command format that allows both short arguments and key-value pairs:
 
 ### Basic Command with Short Arguments
 ```
@@ -88,17 +88,17 @@ TBot supports a special command format that allows both short arguments and key-
 
 ## API Reference
 
-### `TBot`
+### `Toby`
 
 The main bot struct.
 
-#### `TBot::new(token, handler)`
+#### `Toby::new(token, handler)`
 Creates a new bot instance.
 
 - `token`: Your Telegram bot token (get it from [@BotFather](https://t.me/botfather))
 - `handler`: A function that takes `&Msg` and returns a `Future<Output = anyhow::Result<ReplyMsg>>`
 
-#### `TBot::listen()`
+#### `Toby::listen()`
 Starts the bot and listens for incoming messages.
 
 ### `Msg`

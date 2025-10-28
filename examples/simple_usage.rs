@@ -1,6 +1,6 @@
 use anyhow::anyhow;
 use std::{future::Future, pin::Pin};
-use tbot::{Msg, ReplyMsg, TBot};
+use toby::{Msg, ReplyMsg, Toby};
 
 fn handle_msg(_msg: &Msg) -> Pin<Box<dyn Future<Output = anyhow::Result<ReplyMsg>> + Send>> {
     Box::pin(async move { Err(anyhow!("todo")) })
@@ -10,5 +10,5 @@ fn handle_msg(_msg: &Msg) -> Pin<Box<dyn Future<Output = anyhow::Result<ReplyMsg
 async fn main() {
     let token = "<TELEGRAM_TOKEN_HERE>";
 
-    TBot::new(token, handle_msg).listen().await;
+    Toby::new(token, handle_msg).listen().await;
 }

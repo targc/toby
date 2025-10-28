@@ -1,5 +1,5 @@
 pub mod command;
 pub use command::*;
 
-pub mod tbot;
-pub use tbot::*;
+pub mod toby;
+pub use toby::*;
