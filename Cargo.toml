@@ -2,6 +2,15 @@
 name = "toby"
 version = "0.1.0"
 edition = "2024"
+description = "A simple, opinionated Telegram bot library with structured command parsing"
+authors = ["sommit.kcc@gmail.com"]
+license = "MIT"
+repository = "https://github.com/targc/toby"
+homepage = "https://github.com/targc/toby"
+documentation = "https://docs.rs/toby"
+readme = "README.md"
+keywords = ["telegram", "bot", "teloxide", "async", "command-parser"]
+categories = ["api-bindings", "asynchronous"]
 
 [dependencies]
 teloxide = { version = "0.17.0", features = ["macros"] }
