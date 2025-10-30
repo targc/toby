@@ -65,7 +65,9 @@ impl Toby {
                                 dbg!(&reply_msg);
                                 let _ = bot.send_message(msg.chat.id, reply_msg.text).await;
                             }
-                            Err(_) => todo!(),
+                            Err(e) => {
+                                let _ = bot.send_message(msg.chat.id, e.to_string()).await;
+                            }
                         }
                     }
                 }
