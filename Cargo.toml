@@ -1,6 +1,6 @@
 [package]
 name = "toby"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2024"
 description = "A simple, opinionated Telegram bot library with structured command parsing"
 authors = ["targc <sommit.kcc@gmail.com>"]
