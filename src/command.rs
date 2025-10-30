@@ -10,8 +10,9 @@ pub struct Command {
 
 pub fn parse_command(input: &str) -> Option<Command> {
     // tolerate leading spaces before /cmd; tolerate CRLF; capture body lines starting with '-'
+    // body is optional - command can be "/testcmd arg1" or "/testcmd" without body
     let re = Regex::new(
-        r"(?m)^\s*/(?P<cmd>[A-Za-z][\w-]*)(?P<shorts>[^\r\n]*)\r?\n(?P<body>(?:[ \t]*-[ \t]+.*(?:\r?\n|$))*)"
+        r"(?m)^\s*/(?P<cmd>[A-Za-z][\w-]*)(?P<shorts>[^\r\n]*)(?:\r?\n(?P<body>(?:[ \t]*-[ \t]+.*(?:\r?\n|$))*))?"
     ).unwrap();
 
     let mut it = re.captures_iter(input);
