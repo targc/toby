@@ -4,7 +4,7 @@ use teloxide::prelude::*;
 
 use super::command::{Command, parse_command};
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Msg {
     pub group_id: String,
     pub sender_username: Option<String>,
@@ -12,7 +12,7 @@ pub struct Msg {
     pub cmd: Command,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct ReplyMsg {
     pub text: String,
 }
